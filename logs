@@ -1,0 +1,11 @@
+pip install configparser
+pip install mutagen
+pip install requests
+
+common line 12 `from fdfs_client.sendfile import *` in `storage_client.py` to avoid no module named sendfile error
+
+change `conn.sendall(header)` to `conn._sock.sendall(header)` at line 202 in `fdfs_protol.py` to avoid Connection has no attribute sendall error
+
+change `header = conn.recv(self.header_len())` to `header = conn._sock.recv(self.header_len())` at line 212 in `fdfs_protol.py` to avoid Connection has no attribute sendall error
+
+upload by means of `main.py` to avoid keyError port
